@@ -25,9 +25,9 @@ window.onload=function(){
         index=-1;
    
     // 点击三角时
+      // 执行脚本
     title.onclick=function(event){
       menu.style.display='block';
-      // 执行脚本
     }  
     
     //console.log(lis);
@@ -49,17 +49,19 @@ window.onload=function(){
           var index1=a1.attributes["selectid"].value;
           //var index1=as[i].selectedIndex;
           menu.style.display='none';
-          var i2=a1.selectid;
+          //var i2=a1.selectid;
           var i4=a1.innerHTML;
           //var i5=a1.getPropery('selectid')
 
-          var i3=1;
+          //var i3=1;
 
           //console.log(i4);
           //console.log(a1);
-          console.log(index1);
-          console.log(i2);
-          console.log(i3);
+          console.log("selectid:"+index1);
+
+          title.innerHTML=a1.innerHTML;
+          //console.log(i2);
+          //console.log(i3);
         }
 
 
