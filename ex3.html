@@ -9,8 +9,7 @@ body,ul,li{ margin:0; padding:0; font-size:13px;}
 ul,li{list-style:none;}
 #divselect{width:186px; margin:80px auto; position:relative; z-index:10000;}
 #divselect cite{width:150px; height:24px;line-height:24px; display:block; color:#807a62; cursor:pointer;font-style:normal;
-padding-left:4px; padding-right:30px; border:1px solid #333333; 
-background:url(xjt.png) no-repeat right center;}
+padding-left:4px; padding-right:30px; border:1px solid #333333; }
 #divselect ul{width:184px;border:1px solid #333333; background-color:#ffffff; position:absolute; z-index:20000; margin-top:-1px; display:none;}
 #divselect ul li{height:24px; line-height:24px;}
 #divselect ul li a{display:block; height:24px; color:#333333; text-decoration:none; padding-left:10px; padding-right:10px;}
@@ -19,6 +18,7 @@ background:url(xjt.png) no-repeat right center;}
    <script type="text/javascript">
 window.onload=function(){
 	var box=document.getElementById('divselect'),
+      lis=box.getElementsByTagName('li'),
 	    title=box.getElementsByTagName('cite')[0],
 	    menu=box.getElementsByTagName('ul')[0],
 	    as=box.getElementsByTagName('a'),
@@ -30,8 +30,40 @@ window.onload=function(){
       // 执行脚本
     }  
     
+    //console.log(lis);
+
    // 滑过滑过、离开、点击每个选项时
       // 执行脚本
+      for(let i=0,l=lis.length;i<=l;i++){
+ //     for(let i=0;i<=l=lis.length;i++){
+        lis[i].onmouseover=function(){
+          this.style.background='#567';
+        }
+
+        lis[i].onmouseout=function(){
+          this.style.background='#fff';
+        }
+
+        lis[i].onclick=function(){
+          var a1=as[i]
+          var index1=a1.attributes["selectid"].value;
+          //var index1=as[i].selectedIndex;
+          menu.style.display='none';
+          var i2=a1.selectid;
+          var i4=a1.innerHTML;
+          //var i5=a1.getPropery('selectid')
+
+          var i3=1;
+
+          //console.log(i4);
+          //console.log(a1);
+          console.log(index1);
+          console.log(i2);
+          console.log(i3);
+        }
+
+
+      }
 //
    // 点击页面空白处时
        // 执行脚本
