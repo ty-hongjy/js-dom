@@ -18,7 +18,6 @@ padding-left:4px; padding-right:30px; border:1px solid #333333; }
    <script type="text/javascript">
 window.onload=function(){
 	var box=document.getElementById('divselect'),
-      lis=box.getElementsByTagName('li'),
 	    title=box.getElementsByTagName('cite')[0],
 	    menu=box.getElementsByTagName('ul')[0],
 	    as=box.getElementsByTagName('a'),
@@ -26,43 +25,55 @@ window.onload=function(){
    
     // 点击三角时
       // 执行脚本
-    title.onclick=function(event){
-      menu.style.display='block';
+    title.onclick=function(e){
+    	e=e || window.event;
+		if(e.stopPropagation){
+			e.stopPropagation();
+		}else{
+			e.cancelBubble=true;
+		}
+
+		if(menu.style.display=='block'){
+	      	menu.style.display='none';
+		}else{
+	      	menu.style.display='block';
+		}
     }  
     
-    //console.log(lis);
-
    // 滑过滑过、离开、点击每个选项时
       // 执行脚本
-      for(let i=0,l=lis.length;i<=l;i++){
+      for(let i=0,l=as.length;i<=l;i++){
  //     for(let i=0;i<=l=lis.length;i++){
-        lis[i].onmouseover=function(){
+        as[i].onmouseover=function(){
           this.style.background='#567';
         }
 
-        lis[i].onmouseout=function(){
+        as[i].onmouseout=function(){
           this.style.background='#fff';
         }
 
-        lis[i].onclick=function(){
-          var a1=as[i]
-          var index1=a1.attributes["selectid"].value;
-          var i4=a1.innerHTML;
+        as[i].onclick=function(e){
+          var index1=this.attributes["selectid"].value;
+        	e=e || window.event;
+        	if(e.stopPropagation){
+				e.stopPropagation();
+        	}else{
+        		e.cancelBubble=true;
+        	}
 
-          menu.style.display='none';
-          //var i2=a1.selectid;
-          //var i5=a1.getPropery('selectid')
-
-          //console.log(a1);
           console.log("selectid:"+index1);
-
-          title.innerHTML=a1.innerHTML;
+          title.innerHTML=this.innerHTML;
+          menu.style.display='none';
         }
 
       }
 //
    // 点击页面空白处时
        // 执行脚本
+        document.onclick=function(){
+        	console.log("d::");
+        	menu.style.display='none';
+        }
  }
    </script>
 
