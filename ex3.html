@@ -54,6 +54,7 @@ window.onload=function(){
 
         as[i].onclick=function(e){
           var index1=this.attributes["selectid"].value;
+          var index2=this.getAttribute("selectid");
         	e=e || window.event;
         	if(e.stopPropagation){
 				e.stopPropagation();
@@ -62,6 +63,7 @@ window.onload=function(){
         	}
 
           console.log("selectid:"+index1);
+          console.log("selectid2:"+index2);
           title.innerHTML=this.innerHTML;
           menu.style.display='none';
         }
