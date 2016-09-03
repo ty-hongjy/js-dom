@@ -15,68 +15,91 @@ padding-left:4px; padding-right:30px; border:1px solid #333333; }
 #divselect ul li a{display:block; height:24px; color:#333333; text-decoration:none; padding-left:10px; padding-right:10px;}
 	</style>
 
-   <script type="text/javascript">
-window.onload=function(){
-	var box=document.getElementById('divselect'),
-	    title=box.getElementsByTagName('cite')[0],
-	    menu=box.getElementsByTagName('ul')[0],
-	    as=box.getElementsByTagName('a'),
+  <script type="text/javascript">
+  	window.onload=function(){
+  	var box=document.getElementById('divselect'),
+  	    title=box.getElementsByTagName('cite')[0],
+  	    menu=box.getElementsByTagName('ul')[0],
+  	    as=box.getElementsByTagName('a'),
         index=-1;
-   
-    // 点击三角时
-      // 执行脚本
-    title.onclick=function(e){
-    	e=e || window.event;
-		if(e.stopPropagation){
-			e.stopPropagation();
-		}else{
-			e.cancelBubble=true;
-		}
+     
+      // 点击三角时
+        // 执行脚本
+      title.onclick=function(e){
+    		if(menu.style.display=='block'){
+    	      	menu.style.display='none';
+    		}else{
+    	      	menu.style.display='block';
+    		}
 
-		if(menu.style.display=='block'){
-	      	menu.style.display='none';
-		}else{
-	      	menu.style.display='block';
-		}
-    }  
-    
-   // 滑过滑过、离开、点击每个选项时
-      // 执行脚本
-      for(let i=0,l=as.length;i<=l;i++){
- //     for(let i=0;i<=l=lis.length;i++){
-        as[i].onmouseover=function(){
-          this.style.background='#567';
+      	stopBubble(e);
+      }  
+      
+      //keyup event
+      document.onkeyup=function(event){
+            
+        event=event||window.event;
+        console.log("key:"+event.keyCode);
+        
+        if(event.keyCode==13){
+
         }
 
-        as[i].onmouseout=function(){
-          this.style.background='#fff';
+        if(event.keyCode==38){
+
         }
 
-        as[i].onclick=function(e){
-          var index1=this.attributes["selectid"].value;
-          var index2=this.getAttribute("selectid");
-        	e=e || window.event;
-        	if(e.stopPropagation){
-				e.stopPropagation();
-        	}else{
-        		e.cancelBubble=true;
-        	}
-
-          console.log("selectid:"+index1);
-          console.log("selectid2:"+index2);
-          title.innerHTML=this.innerHTML;
-          menu.style.display='none';
+        if(event.keyCode==40){
+          
         }
-
       }
-//
-   // 点击页面空白处时
-       // 执行脚本
-        document.onclick=function(){
-        	console.log("d::");
-        	menu.style.display='none';
+
+      // 点击页面空白处时
+      // 执行脚本
+      document.onclick=function(){
+        //console.log("d::");
+        menu.style.display='none';
+      }
+
+     // 滑过滑过、离开、点击每个选项时
+        // 执行脚本
+        for(let i=0,l=as.length;i<=l;i++){
+   //     for(let i=0;i<=l=lis.length;i++){
+          as[i].onmouseover=function(e){
+            this.style.background='#567';
+            stopBubble(e);
+          }
+
+          as[i].onmouseout=function(e){
+            this.style.background='#fff';
+            stopBubble(e);
+          }
+
+          as[i].onclick=function(e){
+            var index1=this.attributes["selectid"].value;
+            var index2=this.getAttribute("selectid");
+          	
+          	stopBubble(e);
+
+            console.log("selectid:"+index1);
+            console.log("selectid2:"+index2);
+            title.innerHTML=this.innerHTML;
+            menu.style.display='none';
+          }
+
         }
- }
+
+      }//end onload
+
+    	function stopBubble(e){
+          e=e || window.event;
+          if(e.stopPropagation){
+            e.stopPropagation();
+          }else{
+            e.cancelBubble=true;
+          }
+      }
+
    </script>
 
 
