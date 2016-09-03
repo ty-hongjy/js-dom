@@ -51,6 +51,16 @@
           // 执行代码
           login_box.style.display='block';
     
+          stopBubble(e);
+        }
+        
+        // 隐藏登录层函数
+        function hideLogin(){
+          // 执行代码
+          login_box.style.display='none';
+        }
+
+        function stopBubble(e){
           e=e || window.event;
           if(e.stopPropagation){
             e.stopPropagation();
@@ -58,12 +68,6 @@
             e.cancelBubble=true;
           }
 
-        }
-        
-        // 隐藏登录层函数
-        function hideLogin(){
-          // 执行代码
-          login_box.style.display='none';
         }
 
 	</script>
