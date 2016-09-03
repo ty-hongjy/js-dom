@@ -24,6 +24,14 @@
         //点击关闭按钮隐藏登录层
         // 执行代码
         addEvent(close,'click',hideLogin)
+
+           // 点击页面空白处时
+       // 执行脚本
+        document.onclick=function(){
+          console.log("d::");
+          login_box.style.display='none';
+        }
+
       }
 
         // 封装添加事件监听程序
@@ -39,9 +47,17 @@
        }
 
         // 显示登录层函数
-        function showLogin(){
+        function showLogin(e){
           // 执行代码
           login_box.style.display='block';
+    
+          e=e || window.event;
+          if(e.stopPropagation){
+            e.stopPropagation();
+          }else{
+            e.cancelBubble=true;
+          }
+
         }
         
         // 隐藏登录层函数
