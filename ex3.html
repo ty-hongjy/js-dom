@@ -67,19 +67,19 @@ padding-left:4px; padding-right:30px; border:1px solid #333333; }
    //     for(let i=0;i<=l=lis.length;i++){
           as[i].onmouseover=function(e){
             this.style.background='#567';
-            stopBubble(e);
+            //stopBubble(e);
           }
 
           as[i].onmouseout=function(e){
             this.style.background='#fff';
-            stopBubble(e);
+            //stopBubble(e);
           }
 
           as[i].onclick=function(e){
             var index1=this.attributes["selectid"].value;
             var index2=this.getAttribute("selectid");
           	
-          	stopBubble(e);
+          	//stopBubble(e);
 
             console.log("selectid:"+index1);
             console.log("selectid2:"+index2);
