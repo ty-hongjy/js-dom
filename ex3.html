@@ -34,7 +34,7 @@ padding-left:4px; padding-right:30px; border:1px solid #333333; }
     		}
 
       	stopBubble(e);
-      }  
+      }
       
       //keyup event
       document.onkeyup=function(event){
@@ -43,18 +43,9 @@ padding-left:4px; padding-right:30px; border:1px solid #333333; }
 
         if(menu.style.display=='block'){
         console.log("key:"+event.keyCode);
-	        	//{ return;}
-	        //}
-			
-
-        console.log("key index:"+index);
+        console.log("key oldindex:"+index);
         
-			//for(let i=0,l=as.length;i<=l;i++){
-    	        
-			//stopBubble(e);
       	}
-
-			
 
 	        if(event.keyCode==13){
 				//as[index].style.background='#567';
@@ -66,6 +57,7 @@ padding-left:4px; padding-right:30px; border:1px solid #333333; }
     				index--;
             if(index  < 0){
               index=as.length -1 ;
+              oldindex=0
             }
 
             as[oldindex].style.background='#fff';
@@ -78,6 +70,7 @@ padding-left:4px; padding-right:30px; border:1px solid #333333; }
               index++;
               if(index >= as.length){
                 index=0;
+                oldindex=as.length -1
               }
               as[oldindex].style.background='#fff';
 				      as[index].style.background='#567';
