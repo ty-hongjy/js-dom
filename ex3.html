@@ -33,7 +33,13 @@ padding-left:4px; padding-right:30px; border:1px solid #333333; }
     	      	menu.style.display='block';
     		}
 
-        as[0].style.background='#567';
+        if(index>=0){
+          as[index].style.background='#567';
+        }
+        else{
+          as[0].style.background='#567';
+        }
+
       	stopBubble(e);
       }
       
