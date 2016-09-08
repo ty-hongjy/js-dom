@@ -25,7 +25,7 @@ padding-left:4px; padding-right:30px; border:1px solid #333333; }
         index=-1;
      
       // 点击三角时
-        // 执行脚本
+      // 执行脚本
       title.onclick=function(e){
     		if(menu.style.display=='block'){
     	      	menu.style.display='none';
@@ -33,6 +33,7 @@ padding-left:4px; padding-right:30px; border:1px solid #333333; }
     	      	menu.style.display='block';
     		}
 
+        as[0].style.background='#567';
       	stopBubble(e);
       }
       
@@ -42,45 +43,46 @@ padding-left:4px; padding-right:30px; border:1px solid #333333; }
         event=event||window.event;
 
         if(menu.style.display=='block'){
-        console.log("key:"+event.keyCode);
-        console.log("key oldindex:"+index);
+          console.log("key:"+event.keyCode);
+          console.log("key oldindex:"+index);
         
       	}
 
-	        if(event.keyCode==13){
-				//as[index].style.background='#567';
-	        }
+        //return
+        if(event.keyCode==13){
+          title.innerHTML=as[index].innerHTML;
+          menu.style.display='none';
+        }
 
-	        // up
-	        if(event.keyCode==38){
-            oldindex=index;
-    				index--;
-            if(index  < 0){
-              index=as.length -1 ;
-              oldindex=0
+        // up
+        if(event.keyCode==38){
+          oldindex=index;
+  				index--;
+          if(index  < 0){
+            index=as.length -1 ;
+            oldindex=0
+          }
+
+          as[oldindex].style.background='#fff';
+        	as[index].style.background='#567';
+        }
+
+        // down
+        if(event.keyCode==40){
+          	oldindex=index;
+            index++;
+            if(index >= as.length){
+              index=0;
+              oldindex=as.length -1
             }
-
             as[oldindex].style.background='#fff';
-          	as[index].style.background='#567';
-	        }
+  		      as[index].style.background='#567';
+        }
 
-	        // down
-	        if(event.keyCode==40){
-	          	oldindex=index;
-              index++;
-              if(index >= as.length){
-                index=0;
-                oldindex=as.length -1
-              }
-              as[oldindex].style.background='#fff';
-				      as[index].style.background='#567';
-	        }
-
-          console.log("key newindex:"+index);
+        console.log("key newindex:"+index);
 
     	}
       
-
       // 点击页面空白处时
       // 执行脚本
       document.onclick=function(){
